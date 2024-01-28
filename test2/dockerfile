@@ -1,0 +1,18 @@
+# Используем базовый образ с Python
+FROM python:3.8
+
+# Устанавливаем Flask
+RUN pip install flask
+
+# Копируем приложение в контейнер
+COPY . /app
+WORKDIR /app
+
+# Устанавливаем переменную окружения для Flask
+ENV FLASK_APP=app.py
+
+# Команда, которая будет выполняться при запуске контейнера
+CMD ["flask", "run", "--host=0.0.0.0"]
+
+
+# Output is "Hello World"
